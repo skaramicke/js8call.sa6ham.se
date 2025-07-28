@@ -1,13 +1,16 @@
-import { Buffer } from 'buffer'
-window.Buffer = Buffer
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { ChakraProvider, createSystem, defaultConfig } from "@chakra-ui/react";
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// Create a proper Chakra UI system to avoid _config errors
+const system = createSystem(defaultConfig);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <ChakraProvider value={system}>
+      <App />
+    </ChakraProvider>
+  </StrictMode>
+);
