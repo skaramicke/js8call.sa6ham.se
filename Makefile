@@ -1,11 +1,11 @@
-install:
+.PHONY: clean
+
+node_modules:
 	npm install
 
-dev:
-	npm run dev
-
-build:
+dist: node_modules
 	npm run build
 
-serve:
-	npm run preview
+clean:
+	rm -rf node_modules
+	rm -rf dist
